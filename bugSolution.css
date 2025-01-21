@@ -1,0 +1,14 @@
+The solution involves separating the unit handling and type conversion:
+
+```css
+:root {
+  --element-width: calc(var(--data-width-num) * 1px);
+}
+
+.element {
+  width: var(--element-width);
+  --data-width-num: attr(data-width);
+}
+```
+
+This revised CSS code first defines a numeric CSS variable `--data-width-num` that retrieves and sets the value from the `data-width` attribute. The `calc()` function then uses this numeric variable for the calculation ensuring that it works correctly.  This approach avoids direct string manipulation within `calc()` and ensures the calculation is performed correctly.
