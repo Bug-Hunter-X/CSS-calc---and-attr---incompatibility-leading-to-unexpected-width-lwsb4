@@ -1,0 +1,13 @@
+The following CSS code snippet exhibits an uncommon error related to the use of the `calc()` function and the `attr()` function together within a CSS variable:
+
+```css
+:root {
+  --element-width: calc(attr(data-width) * 1px);
+}
+
+.element {
+  width: var(--element-width);
+}
+```
+
+The issue stems from trying to directly multiply the value obtained from `attr(data-width)` by `1px` within the `calc()` function.  `attr()` returns a string, and CSS's `calc()` function has limited support for string manipulation and unit conversions in this context. While `calc()` can handle mathematical operations, it typically expects numeric values with units.
